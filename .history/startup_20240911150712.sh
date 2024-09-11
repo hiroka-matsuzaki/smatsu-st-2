@@ -18,4 +18,4 @@ source ~/.rye/env
 rye sync
 
 # Streamlitアプリを起動
-rye run streamlit run app.py --server.port=8000 --server.address=0.0.0.0
+rye run streamlit run app.py --server.port 8000
