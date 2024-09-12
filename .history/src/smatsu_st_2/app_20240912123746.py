@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit.web.server.websocket_headers import _get_websocket_headers
 
+
 st.title('Hello! This streamlit app is on Azure AppService.')
 
 headers = _get_websocket_headers()
