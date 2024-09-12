@@ -1,6 +1,5 @@
 import streamlit as st
-import jwt  # PyJWTライブラリを使用
-from jwt import DecodeError
+
 
 # st.title('Hello! This streamlit app is on Azure AppService.')
 

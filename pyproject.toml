@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 dependencies = [
     "streamlit>=1.38.0",
+    "pyjwt>=2.9.0",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
