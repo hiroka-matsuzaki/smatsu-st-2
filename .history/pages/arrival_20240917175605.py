@@ -1,6 +1,5 @@
 import streamlit as st
 import requests
-import pandas as pd
 from datetime import datetime
 
 event_id = st.text_input("大会のIDを入力してください。")
@@ -20,7 +19,7 @@ if st.button("大会情報取得"):
                 if races:
                     tags = races[0]["check_points "]  # 最初のレースデータのtagsを取得
                     df = pd.DataFrame(tags)
-                    st.dataframe(df, height=500, width=800)  # 高さ500px、幅800pxに設定
+                    st.dataframe(sorted_df, height=500, width=800)  # 高さ500px、幅800pxに設定
 
                 st.success("データの取得に成功しました！")
                 # st.json(data)  # 取得したJSONデータを表示
@@ -33,25 +32,15 @@ if st.button("大会情報取得"):
     else:
         st.error("URLを入力してください。")
 
-# POSTリクエストを送信する関数
-def send_post_request(number, checkpoint, timestamp, event_id):
-    url = "https://asia-northeast1-uf-measure-dev.cloudfunctions.net/event/" + (event_id)
-    data = {
-      "race_id": 1,
-      "check_point_id": (checkpoint),
-      "_embedded": {
-        "records": [
-          {
-            "bib_no": (number),
-            "time": "",
-            "timestamp": (timestamp),
-            "input_type": "python",
-            "tag_id": "tag_001"
-          }
-        ]
-      }
-    }
 
+# POSTリクエストを送信する関数
+def send_post_request(number, id_value, timestamp):
+    url = 'http://example.com/your-endpoint'  # 送信先のURLに置き換えてください
+    data = {
+        'number': number,
+        'id': id_value,
+        'timestamp': timestamp
+    }
     response = requests.post(url, json=data)
     if response.status_code == 200:
         st.success('データが正常に送信されました。')
@@ -63,11 +52,11 @@ st.title('データ送信フォーム')
 
 with st.form(key='data_form'):
     number = st.text_input('番号')
-    checkpoint = st.number_input('チェックポイント', min_value=0)  # チェックポイントの入力欄
+    id_value = st.text_input('ID')
     submit_button = st.form_submit_button(label='送信')
 
     if submit_button:
         # 現在のタイムスタンプを取得
         timestamp = datetime.now().isoformat()
         # POSTリクエストを送信
-        send_post_request(number, checkpoint, timestamp, event_id)
+        send_post_request(number, id_value, timestamp)

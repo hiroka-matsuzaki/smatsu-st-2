@@ -45,8 +45,14 @@ def send_post_request(number, checkpoint, timestamp, event_id):
             "bib_no": (number),
             "time": "",
             "timestamp": (timestamp),
-            "input_type": "python",
+            "input_type": "manual",
             "tag_id": "tag_001"
+          },
+          {
+            "bib_no": "456",
+            "timestamp": 1694956900000,
+            "input_type": "automatic",
+            "tag_id": "tag_002"
           }
         ]
       }

@@ -34,24 +34,14 @@ if st.button("大会情報取得"):
         st.error("URLを入力してください。")
 
 # POSTリクエストを送信する関数
-def send_post_request(number, checkpoint, timestamp, event_id):
-    url = "https://asia-northeast1-uf-measure-dev.cloudfunctions.net/event/" + (event_id)
+def send_post_request(number, id_value, checkpoint, timestamp):
+    url = 'http://example.com/your-endpoint'  # 送信先のURLに置き換えてください
     data = {
-      "race_id": 1,
-      "check_point_id": (checkpoint),
-      "_embedded": {
-        "records": [
-          {
-            "bib_no": (number),
-            "time": "",
-            "timestamp": (timestamp),
-            "input_type": "python",
-            "tag_id": "tag_001"
-          }
-        ]
-      }
+        'number': number,
+        'id': id_value,
+        'checkpoint': checkpoint,
+        'timestamp': timestamp
     }
-
     response = requests.post(url, json=data)
     if response.status_code == 200:
         st.success('データが正常に送信されました。')
@@ -63,6 +53,7 @@ st.title('データ送信フォーム')
 
 with st.form(key='data_form'):
     number = st.text_input('番号')
+    id_value = st.text_input('ID')
     checkpoint = st.number_input('チェックポイント', min_value=0)  # チェックポイントの入力欄
     submit_button = st.form_submit_button(label='送信')
 
@@ -70,4 +61,4 @@ with st.form(key='data_form'):
         # 現在のタイムスタンプを取得
         timestamp = datetime.now().isoformat()
         # POSTリクエストを送信
-        send_post_request(number, checkpoint, timestamp, event_id)
+        send_post_request(number, id_value, checkpoint, timestamp)

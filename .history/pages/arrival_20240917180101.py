@@ -45,8 +45,14 @@ def send_post_request(number, checkpoint, timestamp, event_id):
             "bib_no": (number),
             "time": "",
             "timestamp": (timestamp),
-            "input_type": "python",
+            "input_type": "manual",
             "tag_id": "tag_001"
+          },
+          {
+            "bib_no": "456",
+            "timestamp": 1694956900000,
+            "input_type": "automatic",
+            "tag_id": "tag_002"
           }
         ]
       }
@@ -63,6 +69,7 @@ st.title('データ送信フォーム')
 
 with st.form(key='data_form'):
     number = st.text_input('番号')
+    id_value = st.text_input('ID')
     checkpoint = st.number_input('チェックポイント', min_value=0)  # チェックポイントの入力欄
     submit_button = st.form_submit_button(label='送信')
 
@@ -70,4 +77,4 @@ with st.form(key='data_form'):
         # 現在のタイムスタンプを取得
         timestamp = datetime.now().isoformat()
         # POSTリクエストを送信
-        send_post_request(number, checkpoint, timestamp, event_id)
+        send_post_request(number, id_value, checkpoint, timestamp)
