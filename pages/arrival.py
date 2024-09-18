@@ -5,8 +5,23 @@ from datetime import datetime
 
 def show():
   event_id = st.text_input("大会のIDを入力してください。")
-  functions_url = "https://asia-northeast1-uf-measure-dev.cloudfunctions.net/event/"
-  # フォームを作成
+  functions_url = "https://asia-northeast1-athreco.cloudfunctions.net/event/"
+
+  col1, col2 = st.columns([1, 2])  # 横に並べるための列を作成
+
+  with col1:
+      if st.button("大会結果を見る"):
+          if event_id:
+              url = "https://athreco.net/event-detail-view-result/?event-id=" + event_id
+              st.session_state.url = url  # URLをセッションステートに保存
+          else:
+              st.error("大会IDを入力してください")
+
+  with col2:
+      if 'url' in st.session_state:  # URLがセッションステートに保存されている場合
+          st.markdown(f'<a href="{st.session_state.url}" target="_blank" rel="noopener noreferrer">Open URL</a>', unsafe_allow_html=True)
+
+    
   if st.button("大会情報取得"):
     if event_id:
         try:
@@ -33,7 +48,7 @@ def show():
         except Exception as e:
             st.error(f"エラーが発生しました: {e}")
     else:
-        st.error("URLを入力してください。")
+        st.error("大会IDを入力してください。")
 
   # POSTリクエストを送信する関数
   def send_post_request(number, checkpoint, timestamp, event_id):
