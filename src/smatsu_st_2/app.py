@@ -3,7 +3,13 @@ import streamlit as st
 from streamlit_navigation_bar import st_navbar
 from pages import home, arrival, entries
 
-# st.set_page_config(initial_sidebar_state="collapsed") ＃不要そうなので一旦コメントアウト
+hide_sidebar_style = """
+<style>
+.css-1d391kg {display: none;}
+</style>
+"""
+
+st.markdown(hide_sidebar_style, unsafe_allow_html=True)
 
 pages = ["Home", "Entries", "Arrival", "GitHub"]
 parent_dir = os.path.dirname(os.path.abspath(__file__))
