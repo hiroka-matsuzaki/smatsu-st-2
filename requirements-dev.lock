@@ -86,7 +86,13 @@ six==1.16.0
     # via python-dateutil
 smmap==5.0.1
     # via gitdb
+st-theme==1.2.3
+    # via streamlit-navigation-bar
 streamlit==1.38.0
+    # via smatsu-st-2
+    # via st-theme
+    # via streamlit-navigation-bar
+streamlit-navigation-bar==3.3.0
     # via smatsu-st-2
 tenacity==8.5.0
     # via streamlit

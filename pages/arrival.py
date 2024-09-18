@@ -3,10 +3,11 @@ import requests
 import pandas as pd
 from datetime import datetime
 
-event_id = st.text_input("大会のIDを入力してください。")
-functions_url = "https://asia-northeast1-uf-measure-dev.cloudfunctions.net/event/"
-# フォームを作成
-if st.button("大会情報取得"):
+def show():
+  event_id = st.text_input("大会のIDを入力してください。")
+  functions_url = "https://asia-northeast1-uf-measure-dev.cloudfunctions.net/event/"
+  # フォームを作成
+  if st.button("大会情報取得"):
     if event_id:
         try:
             # GETリクエストを送信してデータを取得
@@ -34,8 +35,8 @@ if st.button("大会情報取得"):
     else:
         st.error("URLを入力してください。")
 
-# POSTリクエストを送信する関数
-def send_post_request(number, checkpoint, timestamp, event_id):
+  # POSTリクエストを送信する関数
+  def send_post_request(number, checkpoint, timestamp, event_id):
     url = functions_url + event_id
     data = {
       "race_id": 1,
@@ -59,10 +60,10 @@ def send_post_request(number, checkpoint, timestamp, event_id):
     else:
         st.error(f'エラーが発生しました: {response.status_code}')
 
-# StreamlitアプリのUI
-st.title('データ送信フォーム')
+  # StreamlitアプリのUI
+  st.title('データ送信フォーム')
 
-with st.form(key='data_form'):
+  with st.form(key='data_form'):
     number = st.text_input('番号')
     checkpoint = st.number_input('チェックポイント', min_value=0)  # チェックポイントの入力欄
     submit_button = st.form_submit_button(label='送信')
