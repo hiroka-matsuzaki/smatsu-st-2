@@ -3,6 +3,8 @@ import streamlit as st
 from streamlit_navigation_bar import st_navbar
 from pages import home, arrival, entries
 
+st.set_page_config(initial_sidebar_state="collapsed")
+
 hide_sidebar_style = """
 <style>
 .css-1d391kg {display: none;}
