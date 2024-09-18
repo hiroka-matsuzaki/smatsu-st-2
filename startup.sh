@@ -8,4 +8,6 @@ headless = true\n\
 port = $PORT\n\
 [client]\n\
 showErrorDetails = false\n\
+showSidebarNavigation = false\n\
+
 " > ~/.streamlit/config.toml
