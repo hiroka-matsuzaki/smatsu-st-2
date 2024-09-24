@@ -2,9 +2,9 @@ import streamlit as st
 import jwt  # PyJWTライブラリを使用
 from jwt import DecodeError
 
-headers = st.context.headers
-access_token = headers.get("X-Ms-Token-Aad-Access-Token")
-decoded_token = jwt.decode(access_token, options={"verify_signature": False}, algorithms=["HS256", "RS256"])
+# headers = st.context.headers
+# access_token = headers.get("X-Ms-Token-Aad-Access-Token")
+# decoded_token = jwt.decode(access_token, options={"verify_signature": False}, algorithms=["HS256", "RS256"])
 # 「Deploy」や「…」メニューを非表示にし、サイドバーを削除するCSS
 st.markdown("""
     <style>
@@ -74,7 +74,7 @@ st.markdown("""
     </style>
     <div class="header">
         <div class="header-left">
-            <img src="icon.png" alt="Icon">
+            <img src="./app/static/icon.png" alt="Icon">
             <h1>アレンジ君</h1>
             <nav class="nav-menu">
                 <a href="#home">Home</a>
