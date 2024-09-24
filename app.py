@@ -74,7 +74,7 @@ st.markdown("""
     </style>
     <div class="header">
         <div class="header-left">
-            <img src="icon.svg" alt="Icon">
+            <img src="icon.png" alt="Icon">
             <h1>アレンジ君</h1>
             <nav class="nav-menu">
                 <a href="#home">Home</a>
