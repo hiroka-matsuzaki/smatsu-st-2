@@ -83,14 +83,13 @@ st.markdown("""
             </nav>
         </div>
         <div class="beta-version">
-            ベータ版
+            {decoded_token["name"]}
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 # メインコンテンツ
 st.markdown('<div class="main">', unsafe_allow_html=True)
-st.json(decoded_token)  # デコードされたトークンを表示
 st.write("ここにメインコンテンツが表示されます")
 st.write("スクロールしてもヘッダーは固定されています。")
 st.markdown('</div>', unsafe_allow_html=True)
