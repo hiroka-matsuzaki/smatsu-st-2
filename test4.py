@@ -2,12 +2,19 @@ import streamlit as st
 import jwt  # PyJWTライブラリを使用
 from jwt import DecodeError
 from pages import home, arrival, entries  # 各ページの関数をインポート
+from fastapi import FastAPI
 
-headers = st.context.headers
-access_token = headers.get("X-Ms-Token-Aad-Access-Token")
-decoded_token = jwt.decode(access_token, options={"verify_signature": False}, algorithms=["HS256", "RS256"])
-user_name = decoded_token["name"]
-# user_name = "test_user_name"
+app = FastAPI()
+
+@app.get("/items/{item_id}")
+async def read_item(item_id):
+    return {"item_id": item_id} 
+ 
+# headers = st.context.headers
+# access_token = headers.get("X-Ms-Token-Aad-Access-Token")
+# decoded_token = jwt.decode(access_token, options={"verify_signature": False}, algorithms=["HS256", "RS256"])
+# user_name = decoded_token["name"]
+user_name = "test_user_name"
 
 st.markdown(f"""
 <style>

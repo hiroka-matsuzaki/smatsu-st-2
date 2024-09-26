@@ -11,7 +11,6 @@ import streamlit as st
 
 
 def show():
-    st.title(f'ようこそArrivalへ！！！')
     # """
     # この関数は、引数に基づいて特定の処理を実行します。
 
@@ -124,3 +123,4 @@ def show():
     #         timestamp = datetime.now().isoformat()
     #         # POSTリクエストを送信
     #         send_post_request(number, checkpoint, timestamp, event_id)
+    st.title(f'ようこそArrivalへ！！！')
