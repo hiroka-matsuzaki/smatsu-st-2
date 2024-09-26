@@ -3,11 +3,11 @@ import jwt  # PyJWTライブラリを使用
 from jwt import DecodeError
 from pages import home, arrival, entries  # 各ページの関数をインポート
 
-headers = st.context.headers
-access_token = headers.get("X-Ms-Token-Aad-Access-Token")
-decoded_token = jwt.decode(access_token, options={"verify_signature": False}, algorithms=["HS256", "RS256"])
-user_name = decoded_token["name"]
-# user_name = "test_user_name"
+# headers = st.context.headers
+# access_token = headers.get("X-Ms-Token-Aad-Access-Token")
+# decoded_token = jwt.decode(access_token, options={"verify_signature": False}, algorithms=["HS256", "RS256"])
+# user_name = decoded_token["name"]
+user_name = "test_user_name"
 
 st.markdown(f"""
 <style>
@@ -83,7 +83,6 @@ header {{visibility: hidden;}}
             <a href="#home">Home</a>
             <a href="#arrival">Arrival</a>
             <a href="#entries">Entries</a>
-            <a href="https://github.com/hiroka-matsuzaki/smatsu-st-2">Github</a?
             </nav>
     </div>
     <div class="beta-version">
