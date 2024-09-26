@@ -4,12 +4,7 @@ from jwt import DecodeError
 from pages import home, arrival, entries  # 各ページの関数をインポート
 from fastapi import FastAPI
 
-app = FastAPI()
 
-@app.get("/items/{item_id}")
-async def read_item(item_id):
-    return {"item_id": item_id} 
- 
 # headers = st.context.headers
 # access_token = headers.get("X-Ms-Token-Aad-Access-Token")
 # decoded_token = jwt.decode(access_token, options={"verify_signature": False}, algorithms=["HS256", "RS256"])
@@ -98,6 +93,12 @@ header {{visibility: hidden;}}
     </div>
 </div>
 """, unsafe_allow_html=True)
+
+app = FastAPI()
+
+@app.get("/items/{item_id}")
+async def read_item(item_id):
+    return {"item_id": item_id} 
 
 page = st.query_params.get("page", ["home"])[0]
 

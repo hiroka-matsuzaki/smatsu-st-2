@@ -3,6 +3,8 @@ import jwt  # PyJWTライブラリを使用
 from jwt import DecodeError
 from pages import home, arrival, entries  # 各ページの関数をインポート
 
+st.set_page_config(page_title="アレンジ君", layout="wide", initial_sidebar_state="collapsed")
+
 headers = st.context.headers
 access_token = headers.get("X-Ms-Token-Aad-Access-Token")
 decoded_token = jwt.decode(access_token, options={"verify_signature": False}, algorithms=["HS256", "RS256"])
